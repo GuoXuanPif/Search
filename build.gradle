@@ -1,0 +1,50 @@
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+    }
+
+    ext.versions = [
+            minSdk        : 15,
+            compileSdk    : 26,
+            buildTools    : '26.0.2',
+
+            androidPlugin : '3.0.1',
+
+            versionCode   : 100,
+            versionName   : '1.0',
+
+            java          : JavaVersion.VERSION_1_8,
+            supportLibrary: '26+',
+    ]
+
+
+    ext.plugs = [
+            android: "com.android.tools.build:gradle:${versions.androidPlugin}",
+    ]
+
+    ext.deps = [
+            support     : [
+                    v4          : "com.android.support:support-v4:${versions.supportLibrary}",
+                    recyclerview: "com.android.support:recyclerview-v7:${versions.supportLibrary}",
+            ],
+
+    ]
+
+    dependencies {
+        classpath plugs.android
+    }
+
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
